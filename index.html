@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Battle ships</title>
+    <link rel="stylesheet" href="../battleship/style.css">
 </head>
 <body>
     
+<div id="game-info">
+    <p>Turn: <span id="turn-dislay"></span></p>
+    <p>Info: <span id="info"></span></p>
+</div>
+
+<div id="gameboards-container"></div>
+
+<div class="option-container">
+    <div class="destroyer-preview" draggable="true"></div>
+    <div class="submarine-preview" draggable="true"></div>
+    <div class="cruiser-preview" draggable="true"></div>
+    <div class="battleship-preview" draggable="true"></div>
+    <div class="carrier-preview" draggable="true"></div>
+</div>
+
 </body>
 </html>
