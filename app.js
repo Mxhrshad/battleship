@@ -76,10 +76,28 @@ function addShipPiece(ship){
         };
     };
 
-    shipBlocks.forEach(shipBlock => {
-        shipBlock.classList.add(ship.name);
-        shipBlock.classList.add('taken');
-    })
+    let valid 
+
+    if (isHorizontal){
+        shipBlocks.every((_shipBlock, index) =>
+            valid = shipBlocks[0].id % width !== width - (shipBlocks.length - (index + 1)));
+    } else {
+        shipBlocks.every((_shipBlock, index) =>
+            valid = shipBlocks[0].id < 90 + (width * index + 1));
+    };
+
+    const notTaken = shipBlocks.every(shipBlock => !shipBlock.classList.contains('taken'));
+
+    if (valid && notTaken){
+        shipBlocks.forEach(shipBlock => {
+            shipBlock.classList.add(ship.name);
+            shipBlock.classList.add('taken');
+        });
+    } else {
+        addShipPiece(ship);
+    };
+
+
 };
 
 ships.forEach(ship => addShipPiece(ship));
