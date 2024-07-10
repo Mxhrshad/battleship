@@ -195,8 +195,12 @@ function handleClick(e){
             classes = classes.filter(className => className !== 'taken');
             playerHits.push(...classes);
             console.log(playerHits)
-        }
-    }
-}
+        };
+        if (!e.target.classList.contains('taken')){
+            infoDisplay.textContent = 'Nothing in that area Capitan!';
+            e.classList.add('empty');
+        };
+    };
+};
 
 startButton.addEventListener('click', startGame)
