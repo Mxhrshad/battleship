@@ -12,16 +12,24 @@ function flip(){
 }
 
 // Creating Boards
-const width = 10
+const width = 10;
 
-function createBoard(){
+function createBoard(user){
     const gameBoardContainer = document.createElement('div');
     gameBoardContainer.classList.add('game-board');
     gameBoardContainer.style.backgroundColor = '#006994';
+    gameBoardContainer.id = user;
 
-    gameBoardsContainer.append(gameBoardContainer)
+    for (let i = 0; i < width * width; i++){
+        const block = document.createElement('div');
+        block.classList.add('block');
+        block.id = i;
+        gameBoardContainer.append(block);
+    }
+
+    gameBoardsContainer.append(gameBoardContainer);
 }
 
-createBoard()
-createBoard()
+createBoard('player');
+createBoard('computer');
 flipButton.addEventListener('click', flip);
