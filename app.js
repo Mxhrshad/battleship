@@ -278,4 +278,15 @@ checkShip('carrier', 5);
 
 console.log('playerHits', playerHits);
 console.log('playerSunkenSips', playerSunkShips);
+
+if(playerSunkShips.length === 5){
+    infoDisplay.textContent = 'YOU WIN CAPITAN!!!';
+    gameOver = true;
+}
+
+if(computerSunkShips.length === 5){
+    infoDisplay.textContent = 'WE LOST CAPITAN!!! COMPUTER SANK ALL OF OUR SHIPS!';
+    gameOver = true;
+}
+
 };
