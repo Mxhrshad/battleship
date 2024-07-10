@@ -181,6 +181,8 @@ function startGame(){
     };
 };
 
+startButton.addEventListener('click', startGame);
+
 let playerHits = [];
 let computerHits = []
 
@@ -198,9 +200,12 @@ function handleClick(e){
         };
         if (!e.target.classList.contains('taken')){
             infoDisplay.textContent = 'Nothing in that area Capitan!';
-            e.classList.add('empty');
+            e.target.classList.add('empty');
         };
+        playerTurn = false;
+        const allBoardBlocks = document.querySelectorAll('#computer div');
+        allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true))); // setting all the event listeners off
+        setTimeout(computerGo, 3000);
     };
 };
 
-startButton.addEventListener('click', startGame)
