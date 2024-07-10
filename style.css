@@ -123,3 +123,15 @@ button{
     color: black;
     background-color: brown;
 }
+
+.hover{
+    background-color: #003e57;
+}
+
+.boom{
+    background-color: #ff0000;
+}
+
+.empty{
+    background-color: grey;
+}
