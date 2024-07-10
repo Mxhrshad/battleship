@@ -173,11 +173,16 @@ let playerTurn
 
 // Start Game
 function startGame(){
-    if(optionContainer.children.length != 0){
-        infoDisplay.textContent = 'Please place all of your pieces!'
-    } else {
-        const allBoardBlocks = document.querySelectorAll("#computer div");
-        allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
+    if (playerTurn === undefined){
+        if(optionContainer.children.length != 0){
+            infoDisplay.textContent = 'Please place all of your pieces!'
+        } else {
+            const allBoardBlocks = document.querySelectorAll("#computer div");
+            allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
+            playerTurn = true;
+            turnDisplay.textContent = "You Go Capitan!";
+            infoDisplay.textContent = "The game has started";
+        };
     };
 };
 
@@ -287,6 +292,6 @@ if(playerSunkShips.length === 5){
 if(computerSunkShips.length === 5){
     infoDisplay.textContent = 'WE LOST CAPITAN!!! COMPUTER SANK ALL OF OUR SHIPS!';
     gameOver = true;
-}
+};
 
 };
