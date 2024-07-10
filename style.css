@@ -129,13 +129,22 @@ button{
 }
 
 .hover{
-    background-color: #003e57;
+    background-color: #003e57 !important;
 }
 
+#computer .destroyer,
+#computer .submarine,
+#computer .cruiser,
+#computer .battleship,
+#computer .carrier{
+    background-color: #006994;
+}
+
+
 .boom{
-    background-color: #ff0000;
+    background-color: #ff0000 !important;
 }
 
 .empty{
-    background-color: grey;
+    background-color: grey !important;
 }
