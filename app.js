@@ -1,6 +1,9 @@
 const optionContainer = document.querySelector('.option-container');
 const flipButton = document.querySelector('#flip-button');
-const gameBoardsContainer = document.querySelector("#gameboards-container")
+const gameBoardsContainer = document.querySelector("#gameboards-container");
+const startButton = document.querySelector("#start-button");
+const infoDisplay = document.querySelector("#info");
+const turnDislay = document.querySelector("#turn-display")
 
 
 // Option Coosing
@@ -163,3 +166,29 @@ function highlightArea(startIndex, ship){
         });
     };
 };
+
+
+let gameOver = false;
+let playerTurn
+
+// Start Game
+function startGame(){
+    if(optionContainer.children.length != 0){
+        infoDisplay.textContent = 'Please place all of your pieces!'
+    } else {
+        const allBoardBlocks = document.querySelectorAll("#computer div");
+        allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
+    };
+};
+
+function handleClick(e){
+    if(!gameOver){
+        if(e.target.classList.contains("taken")){
+            e.target.classList.add("boom");
+            infoDisplay.textContent = "you hit the computer's ship!"
+            
+        }
+    }
+}
+
+startButton.addEventListener('click', startGame)
