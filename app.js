@@ -181,12 +181,20 @@ function startGame(){
     };
 };
 
+let playerHits = [];
+let computerHits = []
+
 function handleClick(e){
     if(!gameOver){
         if(e.target.classList.contains("taken")){
             e.target.classList.add("boom");
             infoDisplay.textContent = "you hit the computer's ship!"
-            
+            let classes = Array.from(e.target.classList);
+            classes = classes.filter(className => className !== 'block');
+            classes = classes.filter(className => className !== 'boom');
+            classes = classes.filter(className => className !== 'taken');
+            playerHits.push(...classes);
+            console.log(playerHits)
         }
     }
 }
