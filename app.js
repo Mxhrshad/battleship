@@ -264,12 +264,13 @@ function checkScore(user, userHits, userSunkShips){
 
     function checkShip(shipName, shipLength){
         if(userHits.filter(storedShipName => storedShipName === shipName).length === shipLength){
-            infoDisplay.textContent = `you sunk the ${user}'s ${shipName}`;
             if (user === 'player'){
                 playerHits = userHits.filter(storedShipName => storedShipName !== shipName);
+                infoDisplay.textContent = `You sunk the computer's ${shipName}`;
             };
             if (user === 'computer'){
                 computerHits = userHits.filter(storedShipName => storedShipName !== shipName);
+                infoDisplay.textContent = `The computer sunk the player's ${shipName}`;
             };
             userSunkShips.push(shipName);
         };
