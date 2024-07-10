@@ -209,3 +209,45 @@ function handleClick(e){
     };
 };
 
+// Define the computer go
+function computerGo(){
+    if (!gameOver){
+        turnDislay.textContent = 'Computer Go!';
+        infoDisplay.textContent = 'The Computer is thinking...'
+
+        setTimeout(() => {
+            let randomGo = Math.floor(Math.random() * width * width);
+            const allBoardBlocks = document.querySelectorAll('#player div');
+
+            if (allBoardBlocks[randomGo].classList.contains('taken') &&
+            allBoardBlocks[randomGo].classList.contains('boom')){
+                computerGo()
+                return
+            } else if (
+                allBoardBlocks[randomGo].classList.contains('taken') &&
+                !allBoardBlocks[randomGo].classList.contains('boom'))
+                {
+                allBoardBlocks[randomGo].classList.add('boom');
+                infoDisplay.textContent = 'The Computer hit your ship Capitan!';
+                let classes = Array.from(e.target.classList);
+                classes = classes.filter(className => className !== 'block');
+                classes = classes.filter(className => className !== 'boom');
+                classes = classes.filter(className => className !== 'taken');
+                computerHits.push(...classes);
+            } else {
+                infoDisplay.textContent = `Lucky ain't ya? nothing hit this time!`;
+                allBoardBlocks[randomGo].classList.add("empty");
+            }
+        }, 3000);
+
+        setTimeout(() =>{
+            playerTurn = true;
+            turnDislay.textContent = 'Your Go Capitan!';
+            infoDisplay.textContent = 'Please take your go!';
+            const allBoardBlocks = document.querySelectorAll('#computer div');
+            allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
+        }, 6000)
+
+
+    };
+};
