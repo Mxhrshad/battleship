@@ -114,7 +114,14 @@ function addShipPiece(user, ship, startId){
         }
     };
 
-
+    let numberOfTwoBlockShipsPlaced = 0;
+    if (shipLength === 2) {
+        if (numberOfTwoBlockShipsPlaced >= 1) {
+            infoDisplay.textContent = 'You can only place one two-block ship at the start.';
+            return;
+        }
+        numberOfTwoBlockShipsPlaced++;
+    }
 };
 
 ships.forEach(ship => addShipPiece("computer", ship));
