@@ -90,7 +90,11 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship){
     return {shipBlocks, valid, notTaken}
 };
 
+let gameStarted = false;
 function addShipPiece(user, ship, startId){
+    if (gameStarted) {
+        return;
+    }
     const allBoardBlocks = document.querySelectorAll(`#${user} div`);
     let randomBoolean = Math.random() < 0.5;
     let isHorizontal = user === 'player' ? angle === 0 : randomBoolean;
@@ -113,15 +117,6 @@ function addShipPiece(user, ship, startId){
             notDropped = true;
         }
     };
-
-    let numberOfTwoBlockShipsPlaced = 0;
-    if (shipLength === 2) {
-        if (numberOfTwoBlockShipsPlaced >= 1) {
-            infoDisplay.textContent = 'You can only place one two-block ship at the start.';
-            return;
-        }
-        numberOfTwoBlockShipsPlaced++;
-    }
 };
 
 ships.forEach(ship => addShipPiece("computer", ship));
@@ -180,6 +175,7 @@ let playerTurn
 
 // Start Game
 function startGame(){
+    gameStarted = true;
     if (playerTurn === undefined){
         if(optionContainer.children.length != 0){
             infoDisplay.textContent = 'Please place all of your pieces!'
